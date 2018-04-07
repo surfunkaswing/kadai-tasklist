@@ -1,5 +1,5 @@
-<%= form_for(@task) do |f| %>
-
+<%= form_for(@task, html: { class: "form-horizontal"}) do |f| %>
+  
   <% if task.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -9,14 +9,16 @@
       </ul>
     </div>
   <% end %>
-
-
-  <%= f.label :content, 'タスク名' %>
-  <%= f.text_field :content %>
-
-  <%= f.label :status, 'ステータス' %>
-  <%= f.text_field :status %>
-
   
-  <%= f.submit '登録' %>
+  <div class="form-group">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8	col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+      <%= f.label :content, 'タスク名', class: "control-label layouts" %>
+      <%= f.text_field :content, class: "form-control" %>
+      <%= f.label :status, 'ステータス', class: "control-label layouts" %>
+      <%= f.text_field :status, class: "form-control" %>
+      <%= f.submit '登録', class: "btn btn-default layouts" %>
+    </div>
+  </div>
+
 <% end %>
+
