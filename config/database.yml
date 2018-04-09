@@ -47,6 +47,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+# for heroku setting
 production:
   adapter: postgresql
   encoding: unicode
