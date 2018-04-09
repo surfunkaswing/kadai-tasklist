@@ -18,8 +18,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = 'ユーザを登録しました。'
-      redirect_to @user
+#      flash[:success] = 'ユーザを登録しました。'
+#      redirect_to @user
+      email = user_params[:email].downcase
+      password = user_params[:password]
+      if login(email, password)
+        flash[:success] = 'ユーザー登録に成功し、ログインしました。'
+        redirect_to tasks_url
+      else
+        flash.now[:danger] = 'ユーザー登録に成功しましたが、ログインに失敗しました。'
+        render 'new'
+      end
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new

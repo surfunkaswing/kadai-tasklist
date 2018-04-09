@@ -24,7 +24,8 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)    
     if @task.save
       flash[:success] = 'Taskが登録されました'
-      redirect_to @task
+#      redirect_to @task
+      redirect_to tasks_url
     else
 #      @tasks = current_user.tasks.order('created_at DESC').page(params[:page]).per(10)
       flash.now[:denger] = 'Taskが登録に失敗しました。'
